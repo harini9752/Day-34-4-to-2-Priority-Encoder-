@@ -1,1 +1,34 @@
+module tb_four_to_two_priority_encoder;
+
+  reg [3:0] inputs;
+  wire [1:0] encoded_output;
+
+  four_to_two_priority_encoder uut (
+    .inputs(inputs),
+    .encoded_output(encoded_output)
+  );
+
+  initial begin
+    // Test 1: Input 3 is active
+    inputs = 4'b1000;
+    #10 $display("Time=%0t Inputs=%b EncodedOutput=%b", $time, inputs, encoded_output);
+
+    // Test 2: Input 2 is active
+    inputs = 4'b0100;
+    #10 $display("Time=%0t Inputs=%b EncodedOutput=%b", $time, inputs, encoded_output);
+
+    // Test 3: Input 1 is active
+    inputs = 4'b0010;
+    #10 $display("Time=%0t Inputs=%b EncodedOutput=%b", $time, inputs, encoded_output);
+
+    // Test 4: No inputs active
+    inputs = 4'b0000;
+    #10 $display("Time=%0t Inputs=%b EncodedOutput=%b", $time, inputs, encoded_output);
+
+    // Add more test cases as needed
+
+    $finish;
+  end
+
+endmodule
 
