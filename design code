@@ -1,0 +1,16 @@
+module four_to_two_priority_encoder (
+  input wire [3:0] inputs,
+  output reg [1:0] encoded_output
+);
+
+  always @* begin
+    case (1'b1)
+      inputs[3]: encoded_output = 2'b11;
+      inputs[2]: encoded_output = 2'b10;
+      inputs[1]: encoded_output = 2'b01;
+      inputs[0]: encoded_output = 2'b00;
+      default: encoded_output = 2'b00; // No inputs active
+    endcase
+  end
+
+endmodule
